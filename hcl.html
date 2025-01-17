@@ -13,20 +13,44 @@
     <!-- Bootstrap + Custom CSS -->
     <link rel="stylesheet" href="assets/css/meyawo.css">
     <style>
-        /* Custom Styles for Better Alignment */
+        /* Gradient Background */
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #D3E4FD, #FFFFFF), radial-gradient(circle, rgba(0, 0, 0, 0.1), transparent 70%);
+            background-size: cover;
+            background-attachment: fixed;
+            animation: backgroundPulse 5s ease-in-out infinite;
         }
 
+        /* Pulse Animation for Spotlight Effect */
+        @keyframes backgroundPulse {
+            0% {
+                background: linear-gradient(135deg, #D3E4FD, #FFFFFF), radial-gradient(circle, rgba(0, 0, 0, 0.1), transparent 70%);
+            }
+
+            50% {
+                background: linear-gradient(135deg, #D3E4FD, #FFFFFF), radial-gradient(circle, rgba(0, 0, 0, 0.15), transparent 70%);
+            }
+
+            100% {
+                background: linear-gradient(135deg, #D3E4FD, #FFFFFF), radial-gradient(circle, rgba(0, 0, 0, 0.1), transparent 70%);
+            }
+        }
+
+        /* Header Style */
         header {
             text-align: center;
             margin-bottom: 2rem;
+            padding: 3rem 0;
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: #333;
+            margin: 0;
         }
 
         header h3 {
@@ -34,12 +58,35 @@
             color: #555;
         }
 
-        .btn {
-            margin: 0.5rem;
+        /* Button Styles */
+        .btn-container {
+            text-align: center;
+            margin-top: 1rem;
         }
 
+        .btn {
+            background-color: #0066cc;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #004b99;
+            transform: translateY(-5px);
+        }
+
+        /* Section Styles */
         .section {
-            margin-bottom: 2rem;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .section h2 {
@@ -63,6 +110,12 @@
 
         .project {
             margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
         }
 
         .project h3 {
@@ -75,78 +128,83 @@
             text-align: justify;
             margin-bottom: 1rem;
         }
-        
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .section {
+                padding: 1.5rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header h3 {
+                font-size: 1.2rem;
+            }
+        }
     </style>
 </head>
 
 <body>
 
     <!-- Page Header -->
-    <header class="header header-mini">
-        <div class="header-title">Experience and Projects</div>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <a href="index.html">
-                    <button class="btn btn-primary">Home</button>
-                </a>
-                <a href="hcl.html">
-                    <button class="btn btn-primary">Experience and Projects</button>
-                </a>
-            </ol>
-        </nav>
+    <header>
+        <h1>Siddharth Kundarapu</h1>
+        <h3>Full Stack Developer</h3>
+       
+        <!-- Centered Visit GitHub Button -->
+        <div class="btn-container">
+            <a href="index.html">
+                <button class="btn btn-primary">Home</button>
+            </a>
+            <a href="https://github.com/siddharthkundarapu" target="_blank">
+                <button class="btn">Visit GitHub</button>
+            </a>
+        </div>
     </header>
 
     <!-- Main Content -->
     <div class="container">
-        <header>
-            <h1>Siddharth Kundarapu</h1>
-            <h3>Full Stack Developer</h3>
-        </header>
-
-        <!-- Experience Section -->
-        <section id="hcl-technologies" class="section">
-            <h2>HCL Technologies</h2>
-            <h3>Software Developer</h3>
-            <ul>
-                <li>Played a key role in the entire SDLC, from requirement gathering to product delivery.</li>
-                <li>Skilled in utilizing Eclipse IDE to develop, debug, and maintain Java applications.</li>
-                <li>Developed a scalable application using J2EE Framework and J2EE Design Patterns.</li>
-                <li>Designed and implemented user interfaces with HTML, CSS, and JavaScript frameworks like Angular.</li>
-                <li>Built robust back-end services using Java, Servlets, JSP, and Spring Boot.</li>
-                <li>Designed and implemented RESTful APIs with endpoints for POST, PUT, DELETE, and GET operations.</li>
-                <li>Managed and optimized databases with Oracle and MySQL.</li>
-                <li>Implemented automated testing frameworks (e.g., Selenium, Jest), reducing bug resolution time by 40%.</li>
-                <li>Collaborated with cross-functional teams to deliver high-quality products and provide regular project status updates to stakeholders.</li>
-            </ul>
-        </section>
-
         <!-- Projects Section -->
         <section class="section">
             <h2>Projects</h2>
 
             <div class="project">
+                <h3>AI Resume Auto Tailoring and Cold Emailing App</h3>
+                <p>Tech stack:  Python (Flask), OpenAI GPT API, PostgreSQL, SMTP</p>
+                <p>Description:
+                    The AI Resume Auto Tailoring and Cold Emailing App is designed to optimize resumes for Applicant Tracking Systems (ATS). The system tailors resumes based on job descriptions, enhancing their chances of passing through ATS filters. It uses the OpenAI API for advanced natural language processing (NLP) to analyze both resumes and job descriptions, identifying key skills, keywords, and requirements to match the content. The app also automates cold emailing by generating personalized email messages and sending them using Python’s SMTP library. For secure data management, the system integrates with PostgreSQL, ensuring that users’ personal information and resume details are stored safely and efficiently.</p>
+            </div>
+
+            <div class="project">
+                <h3>Hospital Appointment Management System</h3>
+                <p>Tech Stack: Next.js, Node.js, MongoDB, Tailwind CSS</p>
+                <p>Description:
+                    The Hospital Appointment Management System provides a comprehensive solution for managing appointments at healthcare facilities. The system allows patients to book appointments online, view available slots, and receive reminders via SMS and email notifications. The backend is built with Node.js and Express to handle the logic of appointment scheduling, while MongoDB stores patient and appointment data. A role-based access control (RBAC) system ensures that hospital staff, patients, and administrators have the appropriate level of access to sensitive information. The system also incorporates real-time features such as instant updates for appointment status and automated notifications to keep patients engaged and informed.</p>
+            </div>
+
+            <div class="project">
                 <h3>Hand Gesture Following Bot</h3>
-                <p>
-                    An innovative bot leveraging Python and IoT components for real-time gesture detection. Integrated IR sensors 
-                    and automotive motors to respond to hand movements. Successfully demonstrated intuitive human-robot interaction, 
-                    paving the way for advancements in robotics.
-                </p>
+                <p>Tech stack: Python, Raspberry Pi, Arduino, OpenCV, PyGame, GPIO, IR Sensors, TensorFlow</p>
+                <p>Description:
+                    The Hand Gesture Following Bot is an innovative project that combines Python programming with IoT technology to detect and respond to human hand gestures in real-time. The bot uses infrared (IR) sensors and motors to detect movement and perform tasks based on user gestures. For instance, a raised hand could command the bot to stop, while a swiping gesture could control its movement. The bot was developed using Raspberry Pi as the central processing unit, and Python libraries like OpenCV for gesture detection, as well as GPIO for controlling the motors. This project demonstrates an intuitive human-robot interaction model, paving the way for gesture-controlled automation in various industries.</p>
             </div>
 
             <div class="project">
                 <h3>Iceberg Detection in Satellite Images</h3>
-                <p>
-                    Developed an automated system to classify icebergs using Python and CNNs. Preprocessed satellite images, 
-                    applied feature extraction, and integrated a robust model for accurate detection. Facilitates safer navigation 
-                    and environmental monitoring.
-                </p>
+                <p>Tech stack: Python, TensorFlow, Keras, OpenCV, Pillow, NumPy, Pandas, Docker, AWS EC2, Matplotlib</p>
+                <p>Description:
+                    The Iceberg Detection System is a machine learning-based application that automatically detects icebergs in satellite imagery. The system processes large sets of satellite images, using Convolutional Neural Networks (CNNs) to classify and identify iceberg regions. Image preprocessing techniques, such as normalization and resizing, are applied to prepare the images for training and inference. The model is trained using a labeled dataset of satellite images containing both iceberg and non-iceberg instances. The system’s accuracy helps ensure safer navigation routes in polar regions, reducing the risk of collisions with icebergs, while also contributing to climate monitoring and environmental protection.</p>
             </div>
 
             <div id="AI" class="project">
                 <h3>AI-Powered Personal Finance Assistant</h3>
-                <p>
-                    Created an intelligent tool for managing finances using machine learning. Integrated with banking APIs for 
-                    real-time transaction analysis, providing users with personalized budgeting and financial insights.
+                <p>Tech stack: Python (Flask), Scikit-learn, Pandas, Plaid API, PostgreSQL, React.js, OAuth 2.0, Twilio API, Nodemailer, Heroku, AWS</p>
+                <p>Description:
+                    The AI-Powered Personal Finance Assistant is an intelligent financial management tool that helps users track their income, expenses, and budget. The system integrates with banking APIs to fetch transaction data in real time and provides personalized insights based on spending habits. By using machine learning algorithms, the app analyzes users’ financial data and provides recommendations for savings, spending habits, and investment opportunities. The goal is to enable users to manage their finances better, avoid overspending, and achieve their financial goals. The assistant also sends automated reminders for bill payments and provides actionable insights based on their financial situation.
                 </p>
             </div>
         </section>
